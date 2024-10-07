@@ -1,10 +1,9 @@
-import { Html, Text } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Mesh, Texture } from "three";
+import { useFrame } from "@react-three/fiber";
+import { useEffect, useMemo, useRef } from "react";
+import { Texture } from "three";
 import * as THREE from "three";
 
-const generateRandomPosition = (radius) => {
+const generateRandomPosition = (radius: number) => {
   const theta = Math.random() * 2 * Math.PI; // Ángulo alrededor del eje Y (plano XZ)
 
   // Conversión de coordenadas polares a cartesianas en el plano XZ
@@ -31,7 +30,7 @@ export function Planet({
   hasRing,
   speed = 0.01,
 }: PlanetProps) {
-  const ref = useRef<Mesh>(null);
+  const ref = useRef<THREE.Group>(null);
   const position = useMemo(() => generateRandomPosition(radius), [radius]);
   const a = radius; // Semieje mayor
   const b = radius - radius * 0.2; // Semieje menor
@@ -53,7 +52,7 @@ export function Planet({
   });
   return (
     <>
-      <group key={name} ref={ref} position={position}>
+      <group key={name} ref={ref} position={position as any}>
         <mesh>
           <sphereGeometry args={[size, 32, 32]} />
           <meshStandardMaterial

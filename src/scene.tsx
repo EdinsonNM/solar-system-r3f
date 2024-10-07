@@ -9,7 +9,7 @@ import { useRef } from "react";
 import * as THREE from "three";
 import Sun from "./sun";
 export default function Scene() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Points>(null);
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.0005;
@@ -34,7 +34,7 @@ export default function Scene() {
           resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
         ></Bloom>
       </EffectComposer>
-      <Stars count={10000} ref={groupRef} fade={true} color={"yellow"} />
+      <Stars count={10000} ref={groupRef} fade={true} />
       <Particles />
 
       <Planets />

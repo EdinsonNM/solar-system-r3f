@@ -6,7 +6,7 @@ import { getRandomColor } from "./utils";
 const NUM_POINTS = 200;
 const RADIUS = 300;
 export default function Particles() {
-  const pointsRef = useRef<THREE.Points>();
+  const pointsRef = useRef<any>(null);
   const texture = useTexture("nebulosa.webp");
   useFrame(() => {
     pointsRef.current!.rotation.x += 0.001;
@@ -15,22 +15,20 @@ export default function Particles() {
   });
   const sizes = new Float32Array(NUM_POINTS);
   for (let i = 0; i < NUM_POINTS; i++) {
-    sizes[i] = Math.random() * 100; // Tamaños aleatorios entre 0.5 y 2.0
+    sizes[i] = Math.random() * 100;
   }
-  const positions = new Float32Array(NUM_POINTS * 3); // Almacena las posiciones XYZ de cada partícula
-  // Radio de la esfera
+  const positions = new Float32Array(NUM_POINTS * 3);
 
   useEffect(() => {
     for (let i = 0; i < NUM_POINTS; i++) {
       const radius = Math.random() * RADIUS + 50;
-      // Ángulo inicial aleatorio
-      // Distancia aleatoria al centro, con una variación de DISTANCE
+
       const phi = Math.acos(2 * Math.random() - 1); // Ángulo desde el polo (0 a PI)
       const theta = 2 * Math.PI * Math.random();
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
       const z = radius * Math.cos(phi);
-      // Posición inicial (en órbita)
+
       positions[i * 3] = x;
       positions[i * 3 + 1] = y;
       positions[i * 3 + 2] = z;
