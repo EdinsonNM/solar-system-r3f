@@ -6,16 +6,19 @@ export default function Sun() {
   const sunRef = useRef<THREE.Mesh>(null);
 
   return (
-    <mesh position={[0, 0, 0]} ref={sunRef}>
-      <sphereGeometry args={[15, 32, 32]} />
-      <meshStandardMaterial
-        emissive={"orange"}
-        map={sunTexture}
-        emissiveIntensity={100}
-        depthWrite={false}
-        roughness={0.9}
-        metalness={0.1}
-      />
-    </mesh>
+    <>
+      <mesh position={[0, 0, 0]} ref={sunRef}>
+        <sphereGeometry args={[15, 32, 32]} />
+        <meshStandardMaterial
+          emissive={"orange"}
+          map={sunTexture}
+          emissiveIntensity={100}
+          depthWrite={false}
+          roughness={0.9}
+          metalness={0.1}
+        />
+      </mesh>
+      <ambientLight intensity={20} />
+    </>
   );
 }

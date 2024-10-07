@@ -12,9 +12,9 @@ export default function UI() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <rect x="8" y="4" width="8" height="16" rx="4" ry="4"></rect>
           <path className="scroll-line" d="M12 8v4"></path>

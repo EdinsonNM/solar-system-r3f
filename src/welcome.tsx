@@ -2,7 +2,7 @@ import { Text3D } from "@react-three/drei";
 
 export default function Welcome() {
   return (
-    <Text3D font={"/fonts/Oxygen_Regular.json"} position={[-4, 3, 0]}>
+    <Text3D font={"/fonts/Oxygen_Regular.json"} position={[-4, 0, 0]}>
       Bienvenidos
       <meshStandardMaterial
         color={"white"}

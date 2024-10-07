@@ -1,6 +1,6 @@
 import { Html, Text } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useEffect, useMemo, useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Mesh, Texture } from "three";
 import * as THREE from "three";
 
@@ -52,34 +52,33 @@ export function Planet({
     }
   });
   return (
-    <group key={name} ref={ref} position={position}>
-      <Html center position={[0, -1, 0]}>
-        <div>{name}</div>
-      </Html>
-      <mesh>
-        <sphereGeometry args={[size, 32, 32]} />
-        <meshStandardMaterial
-          map={texture}
-          emissive={"#000000"}
-          emissiveIntensity={4.4}
-          depthWrite={true}
-          opacity={1}
-          emissiveMap={texture}
-          roughness={0.7}
-        />
-      </mesh>
-      {hasRing && (
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[size + 1.5, 5.5, 32, 32]} />
+    <>
+      <group key={name} ref={ref} position={position}>
+        <mesh>
+          <sphereGeometry args={[size, 32, 32]} />
           <meshStandardMaterial
-            color="gray"
-            side={THREE.DoubleSide} // Muestra el material en ambas caras del anillo
-            roughness={1.7} // Añadir detalles en la superficie
-            emissive={"#fff"}
-            emissiveIntensity={10}
+            map={texture}
+            emissive={"#000000"}
+            emissiveIntensity={4.4}
+            depthWrite={true}
+            opacity={1}
+            emissiveMap={texture}
+            roughness={0.7}
           />
         </mesh>
-      )}
-    </group>
+        {hasRing && (
+          <mesh rotation={[-Math.PI / 2, 0, 0]}>
+            <ringGeometry args={[size + 1.5, 5.5, 32, 32]} />
+            <meshStandardMaterial
+              color="gray"
+              side={THREE.DoubleSide} // Muestra el material en ambas caras del anillo
+              roughness={1.7} // Añadir detalles en la superficie
+              emissive={"#fff"}
+              emissiveIntensity={10}
+            />
+          </mesh>
+        )}
+      </group>
+    </>
   );
 }

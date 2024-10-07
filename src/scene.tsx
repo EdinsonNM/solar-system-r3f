@@ -17,8 +17,8 @@ export default function Scene() {
   });
   return (
     <>
-      <CameraControls />
-      <fog attach="fog" color="#000" near={1} far={100} />
+      <CameraControls makeDefault />
+      <fog attach="fog" color="#000" near={1} far={200} />
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Sun />
