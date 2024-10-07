@@ -3,7 +3,7 @@ export default function UI() {
   return (
     <div className="absolute top-0 left-0 w-screen h-screen flex justify-center items-center pointer-events-none">
       <div className="absolute top-0 left-0 w-screen h-screen px-10 py-10">
-        <img src={"/logo-white.png"} alt="logo" className="w-40" />
+        <img src={"/logo-white.png"} alt="logo" className="w-28 md:w-40" />
       </div>
       <div className="absolute bottom-0 left-0 w-screen h-screen flex flex-col justify-end items-center py-10 pointer-events-none">
         <svg
