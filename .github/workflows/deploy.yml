@@ -14,6 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create .env file
+        run: |
+          echo VITE_ASSETS=${{ secrets.VITE_ASSETS }} > .env
+
       - name: Install Dependencies
         run: npm install
 
